@@ -6,15 +6,35 @@ public class Randomizer {
     private Randomizer() {
     }
 
-    public int getRandNum() {
+    /**
+     * Генерирует случайное число
+     *
+     * @return случайное целое число
+     */
+    public static int getRandNum() {
         return ThreadLocalRandom.current().nextInt();
     }
 
-    public int getRandNumFromTo(int from, int to) {
+    /**
+     * Генерирует случайное число в нужном диапазоне
+     *
+     * @param from нижняя граница (включая) диапазона случайного числа
+     * @param to   верхняя граница (не включая) диапазона случайного числа
+     * @return случайное целое число в выбранном диапазоне
+     */
+    public static int getRandNumFromTo(int from, int to) {
+        if (to <= from) {
+            throw new IllegalArgumentException("Неправильный диапазон: to должно быть больше, чем from");
+        }
         return ThreadLocalRandom.current().nextInt(from, to);
     }
 
-    public boolean getRandBool() {
+    /**
+     * Генерирует случайное булево значение
+     *
+     * @return случайное булево значение
+     */
+    public static boolean getRandBool() {
         return ThreadLocalRandom.current().nextBoolean();
     }
 
