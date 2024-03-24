@@ -1,7 +1,12 @@
 package com.javarush.entity.creatures.animal.predators;
 
-public class Boa extends Predators{
 
-  public Boa() {
+import com.javarush.entity.island.Location;
+
+public class Boa extends Predators {
+
+  public Boa(Location location, int weight, int maxPopulationOnLocation,
+      int maxMoveSpeed, double foodRequiredForFullness) {
+    super(location, weight, maxPopulationOnLocation, maxMoveSpeed, foodRequiredForFullness);
   }
 }

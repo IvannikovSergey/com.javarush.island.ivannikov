@@ -1,18 +1,15 @@
 package com.javarush.entity.creatures.plant;
 
-import com.javarush.abstractions.Creatures;
-import com.javarush.abstractions.Eatable;
+import com.javarush.entity.island.Location;
 
-@Eatable
-public class Plant implements Creatures {
+public class Plant {
+  private final Location location;
 
-  @Override
-  public void eat() {
-
+  public Plant(Location location) {
+    this.location = location;
   }
 
-  @Override
-  public void die() {
-
+  public void growUp() {
+    location.plantGrowth();
   }
 }

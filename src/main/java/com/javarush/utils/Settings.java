@@ -1,4 +1,4 @@
-package com.javarush;
+package com.javarush.utils;
 
 import com.javarush.entity.creatures.animal.Animal;
 import com.javarush.entity.creatures.animal.herbivores.*;
@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class Settings {
 
-  public static final double MAX_AMOUNT_OF_PLANT_ON_ONE_LOCATION = 200;
+  public static final int MAX_AMOUNT_OF_PLANT_ON_ONE_LOCATION = 200;
   public static final int SIZE_OF_GAME_FIELD_X = 100;
   public static final int SIZE_OF_GAME_FIELD_Y = 20;
   public static final double GROWTH_OF_PLANT = 20;

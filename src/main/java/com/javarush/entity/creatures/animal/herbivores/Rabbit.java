@@ -1,7 +1,11 @@
 package com.javarush.entity.creatures.animal.herbivores;
 
-public class Rabbit extends Herbivores{
+import com.javarush.entity.island.Location;
 
-  public Rabbit() {
+public class Rabbit extends Herbivore {
+
+  public Rabbit(Location location, int weight, int maxPopulationOnLocation,
+      int maxMoveSpeed, double foodRequiredForFullness) {
+    super(location, weight, maxPopulationOnLocation, maxMoveSpeed, foodRequiredForFullness);
   }
 }

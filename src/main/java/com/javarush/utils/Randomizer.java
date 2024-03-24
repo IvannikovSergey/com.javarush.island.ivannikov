@@ -11,7 +11,7 @@ public class Randomizer {
      *
      * @return случайное целое число
      */
-    public static int getRandNum() {
+    public static int getRandNum(int i) {
         return ThreadLocalRandom.current().nextInt();
     }
 

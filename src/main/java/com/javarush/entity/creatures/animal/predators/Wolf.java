@@ -1,7 +1,11 @@
 package com.javarush.entity.creatures.animal.predators;
 
-public class Wolf extends Predators{
+import com.javarush.entity.island.Location;
 
-  public Wolf() {
+public class Wolf extends Predators {
+
+  public Wolf(Location location, int weight, int maxPopulationOnLocation,
+      int maxMoveSpeed, double foodRequiredForFullness) {
+    super(location, weight, maxPopulationOnLocation, maxMoveSpeed, foodRequiredForFullness);
   }
 }
