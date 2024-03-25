@@ -11,11 +11,22 @@ public class SimulationStatistics {
   private Map<Class<? extends Animal>, Integer> animalCounts;
   private Map<Location, LocationStatistics> locationStatistics;
   private TreeMap<Location, LocationStatistics> sortedLocationStatistics;
+  private Map<Class<? extends Animal>, Map<Class<? extends Animal>, Integer>> animalsEatenCounts;
 
   public SimulationStatistics() {
     animalCounts = new HashMap<>();
     locationStatistics = new HashMap<>();
     sortedLocationStatistics = new TreeMap<>(new LocationComparator());
+    animalsEatenCounts = new HashMap<>();
+  }
+
+  // Метод для обновления статистики о том, что одно животное съело другое
+  public void updateAnimalsEatenCount(Class<? extends Animal> predatorClass, Class<? extends Animal> preyClass) {
+    if (!animalsEatenCounts.containsKey(predatorClass)) {
+      animalsEatenCounts.put(predatorClass, new HashMap<>());
+    }
+    Map<Class<? extends Animal>, Integer> predators = animalsEatenCounts.get(predatorClass);
+    predators.put(preyClass, predators.getOrDefault(preyClass, 0) + 1);
   }
 
   public void updateAnimalCount(Class<? extends Animal> animalClass, int count) {

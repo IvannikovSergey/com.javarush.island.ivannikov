@@ -12,7 +12,6 @@ public class Settings {
   public static final int MAX_AMOUNT_OF_PLANT_ON_ONE_LOCATION = 200;
   public static final int SIZE_OF_GAME_FIELD_X = 100;
   public static final int SIZE_OF_GAME_FIELD_Y = 20;
-  public static final double GROWTH_OF_PLANT = 20;
 
   private Settings() {
     throw new IllegalStateException("Setting class");

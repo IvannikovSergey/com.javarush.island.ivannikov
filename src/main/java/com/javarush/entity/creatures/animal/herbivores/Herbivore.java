@@ -1,9 +1,11 @@
 package com.javarush.entity.creatures.animal.herbivores;
 
 import com.javarush.entity.creatures.animal.Animal;
+import com.javarush.entity.creatures.plant.Plant;
 import com.javarush.entity.island.Location;
+import com.javarush.utils.Settings;
 
-class Herbivore extends Animal {
+public class Herbivore extends Animal {
 
   public Herbivore(Location location, int weight, int maxPopulationOnLocation, int maxMoveSpeed,
       double foodRequiredForFullness) {
@@ -11,7 +13,41 @@ class Herbivore extends Animal {
   }
 
   @Override
-  public void eat() {
+  public boolean canEat(Animal animal) {
+    return false;
+  }
+
+  @Override
+  public boolean canEat(Plant plant) {
+    // Реализация логики, позволяющей травоядному животному съесть растение
+    // Например, можно проверить тип растения и прочие характеристики животного
+    return true; // Здесь нужно прописать свою логику
+  }
+
+  @Override
+  // Метод, который позволяет травоядным животным поедать траву на локации
+  public void eat(Plant plant) {
+    // Получаем количество травы на локации
+    int plantAmount = (int) location.getPlantAmount();
+
+    // Получаем количество травы, необходимое для насыщения животного
+    double foodRequiredForFullness = Settings.BASIC_PARAMETERS_OF_ANIMALS.get(this.getClass())[3];
+
+    // Определяем, сколько травы съест животное
+    int plantToEat = (int) Math.min(foodRequiredForFullness, plantAmount);
+
+    // Проверяем, достаточно ли травы для насыщения животного
+    if (plantToEat > 0) {
+      // Уменьшаем количество травы на локации
+      location.reducePlant(plantToEat);
+
+      // Увеличиваем сытость животного
+      fullness += plantToEat;
+    }
+  }
+
+  @Override
+  public void eat(Animal animal) {
 
   }
 

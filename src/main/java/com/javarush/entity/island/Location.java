@@ -13,11 +13,13 @@ public class Location {
   private int yPos;
   private int maxAmountPlants = Settings.MAX_AMOUNT_OF_PLANT_ON_ONE_LOCATION;
   private List<Animal> animals;
+  private List<Plant> plants;
   private double plantAmount;
 
   public Location(int x, int y) {
     this.xPos = x;
     this.yPos = y;
+    this.plants = new ArrayList<>();
     this.animals = new ArrayList<>();
   }
 
@@ -54,12 +56,27 @@ public class Location {
 
   public void addPlant(Plant plant) {
     // Проверяем, чтобы количество растений на локации не превысило максимальное значение
-    if (this.plantAmount < maxAmountPlants) {
-      this.plantAmount++;
+    if (plantAmount < maxAmountPlants) {
+      plants.add(plant);
     }
   }
 
+  public List<Plant> getPlants() {
+    return plants;
+  }
+
   public void removePlant(Plant plant) {
+    // Удаляем одно растение с локации
+    if (this.plantAmount > 0) {
+      plants.remove(plant);
+    }
+  }
+
+  public double getPlantAmount() {
+    return plantAmount;
+  }
+
+  public void reducePlant(int grassToEat) {
     // Удаляем одно растение с локации
     if (this.plantAmount > 0) {
       this.plantAmount--;
